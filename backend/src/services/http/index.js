@@ -1,6 +1,6 @@
 import express from 'express'
 import config from '../../config'
-import { authRouter } from '../../routes'
+import { authRouter, tasksRouter } from '../../routes'
 import bodyParser from 'body-parser'
 
 const app = express()
@@ -8,6 +8,7 @@ const app = express()
 app.use(bodyParser.json())
 
 app.use('/api/auth', authRouter)
+app.use('/api/tasks', tasksRouter)
 
 const listen = () => {
   app.listen(config.port, () => {

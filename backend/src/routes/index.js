@@ -1,4 +1,5 @@
-import authRouter from './auth/index'
+import authRouter from './auth'
+import tasksRouter from './tasks'
 
 
-export { authRouter }
+export { authRouter, tasksRouter }

@@ -1,0 +1,13 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-inputs{ 
+  margin: 2px;
+}
+.login-button {
+  margin: 2px;
+}

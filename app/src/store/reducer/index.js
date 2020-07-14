@@ -12,6 +12,18 @@ const reducer = (state = initialState, actions) => {
         ...state,
         user: {...actions.payload}
       } 
+    case CREATE_TASK:
+      const newTask = [...state.tasks]
+      newTask.push(actions.payload.task)
+      return {
+        ...state,
+        tasks: [...newTask]
+      }
+    case GET_TASK:
+      return {
+        ...state,
+        tasks: [...actions.payload.tasks]
+      }    
     default: 
       return state
   }

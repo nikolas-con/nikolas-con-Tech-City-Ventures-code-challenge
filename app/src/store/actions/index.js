@@ -31,4 +31,34 @@ const register = (user) => {
     }
   }
 }
-export { login, register }
+
+const createTask = (task, token)=> {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post('/api/tasks/create', task, {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      })
+      dispatch({ type: CREATE_TASK, payload: { task: response.data.task } })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+const getTask = (task, token)=> {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post('/api/tasks/get', task, {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      })
+      dispatch({ type: GET_TASK, payload: { task: response.data.tasks } })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export { login, register, createTask, getTask }

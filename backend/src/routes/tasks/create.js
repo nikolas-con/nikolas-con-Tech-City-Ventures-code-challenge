@@ -13,7 +13,7 @@ const create = async (req, res) => {
   
     await task.save()
   
-    res.status(200).json({ message: 'The task had created' })
+    res.status(200).json({ task: {discretion: task.discretion, isDone: task.isDone, createdAt: task.createdAt },  message: 'The task had created' })
 
   } catch (error) {
     res.status(500).json({ message: 'An error occurred' })    

@@ -26,7 +26,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    dispatch(login(user))
+    dispatch(login(userCredentials))
   }
   const loginFormProps = { handleLogin, handleOnChange }
 

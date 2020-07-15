@@ -4,9 +4,8 @@ import axios from 'axios'
 const login = (user) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get('/api/auth/login', user, {
+      const response = await axios.post('/api/auth/login', user, {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
       })
       localStorage.clear()
       localStorage.setItem("token", response.data.token)
@@ -19,9 +18,8 @@ const login = (user) => {
 const register = (user) => {
   return async (dispatch) => {
     try {
-      const response = await axios.get('/api/auth/register', user, {
+      const response = await axios.post('/api/auth/register', user, {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
       })
       localStorage.clear()
       localStorage.setItem("token", response.data.token)
@@ -35,26 +33,26 @@ const register = (user) => {
 const createTask = (task, token)=> {
   return async (dispatch) => {
     try {
-      const response = await axios.post('/api/tasks/create', task, {
-        'Authorization': `Bearer ${token}`,
+      const response = await axios.post('/api/tasks/create', task,  {
+        headers: {
+        'Authorization': `Bearer ${token}`, 
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      })
+      }})
+      console.log(response.data)
       dispatch({ type: CREATE_TASK, payload: { task: response.data.task } })
     } catch (error) {
       console.log(error)
     }
   }
 }
-const getTask = (task, token)=> {
+const getTask = (token)=> {
   return async (dispatch) => {
     try {
-      const response = await axios.post('/api/tasks/get', task, {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      })
-      dispatch({ type: GET_TASK, payload: { task: response.data.tasks } })
+      const response = await axios.get('/api/tasks/get', {
+        headers: {
+        'Authorization': `Bearer ${token}`
+      }})
+      dispatch({ type: GET_TASK, payload: { tasks: response.data.tasks } })
     } catch (error) {
       console.log(error)
     }

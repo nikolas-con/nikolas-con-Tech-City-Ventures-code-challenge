@@ -13,7 +13,7 @@ const TodoList = ()=> {
   const { user, tasks } = useSelector(state => state)
 
   useEffect(()=>{
-    dispatch(getTask(task, user.jwt))
+    dispatch(getTask(user.jwt))
   },[])
   
   const history = useHistory()

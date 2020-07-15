@@ -28,14 +28,14 @@ const Register = ()=> {
 
   const handleRegister = (e) => {
     e.preventDefault()
-    dispatch(register(user))
+    dispatch(register(userInformation))
   }
   const regisertFormProps = { handleRegister, handleOnChange }
 
   return (
     <div className="register-container">
       <h1>Register</h1>
-      <RegisterFrom regisertFormProps/>
+      <RegisterFrom {...regisertFormProps}/>
     </div>
   )
 }

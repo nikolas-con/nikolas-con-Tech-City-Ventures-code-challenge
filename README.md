@@ -1,9 +1,9 @@
-OVERVIEW
+#OVERVIEW
 Frontend: React.js and Redux (with redux-thunk)
 Backend: Node.js, Express, Mongoose
 
 
-SETUP
+#SETUP
 To run the backend in development:
 
 cd backend
